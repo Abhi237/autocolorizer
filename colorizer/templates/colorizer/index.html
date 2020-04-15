@@ -1,0 +1,129 @@
+{% extends "colorizer/home.html" %}
+{% load static %}
+{% block content%}
+<div class="container">
+  <div id="outer" class="row">
+    <div style="height:330px"></div>
+    <!--start-->
+    <div id="containerupload" class="sli sliwrapper">
+      <div id="dropzone" style="width: 100%; height: 100%;" ondragover="dragOverHandler(event)"
+        ondrop="dropHandler(event);"></div>
+      <div id="preview" style="width:0%;height:0%;object-fit: contain;">
+      </div>
+    </div>
+    <!--end-->
+
+    <!--loader start-->
+    <div id='loadercontainer' class="sli sliwrapper">
+      <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+    <!--loader end-->
+
+  </div>
+</div>
+<script src="{% static 'colorizer/js/jquery.min.js' %}"></script>
+<script>
+  $("#loadercontainer").addClass("hidden");
+  function dropHandler(ev) {
+    $("#containerupload").addClass("hidden");
+    $("#loadercontainer").removeClass("hidden");
+    console.log('File(s) dropped');
+
+    // Prevent default behavior (Prevent file from being opened)
+    ev.preventDefault();
+
+    if (ev.dataTransfer.items) {
+      // Use DataTransferItemList interface to access the file(s)
+      if (ev.dataTransfer.items.length > 1) {
+        console.log("More than 1 files spotted,try again!");
+        return
+      }
+      for (var i = 0; i < ev.dataTransfer.items.length; i++) {
+        // If dropped items aren't files, reject them
+        if (ev.dataTransfer.items[i].kind === 'file') {
+          var file = ev.dataTransfer.items[i].getAsFile();
+          console.log('... file[' + i + '].name = ' + file.name);
+          //break
+        }
+      }
+    } else {
+      // Use DataTransfer interface to access the file(s)
+      for (var i = 0; i < ev.dataTransfer.files.length; i++) {
+        console.log('... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
+      }
+
+    }
+
+
+    //testing
+    document.getElementById("dropzone").style.display = "none";
+    document.getElementById("preview").style.height = "100%";
+
+    var file = ev.dataTransfer.files[0]
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      var image = document.createElement("img");
+      image.src = e.target.result;
+      image.setAttribute("style", "width:100%");
+      document.getElementById("preview").appendChild(image);
+    }
+    reader.readAsDataURL(file);
+
+    //testing
+
+    var formData = new FormData();
+    $img = file
+    formData.append('image', $img);
+
+    //submittesting ajax
+    $.ajax({
+      url: 'colorit/',
+      type: 'POST',
+      data: formData,
+      contentType: false,
+      processData: false,
+      success: function (response) {
+        $("#loadercontainer").addClass("hidden");
+        $srcbefore = "data:image/jpg;base64," + response["beforeimg"]
+        $srcafter = "data:image/jpg;base64," + response["afterimg"]
+
+        $("#outer").html(`<div style="height:330px"></div><div id="resultwrapper" class="sli sliwrapper">
+          <div class="sli slibefore">
+            <img id="agodar" class="sli slicontent-image" src="`+ $srcbefore + `" draggable="false" /> </div>
+          <div class="sli sliafter">
+            <img id="nantar" class="sli slicontent-image"
+              src="`+ $srcafter + `" draggable="false" />
+          </div>
+          <div class="sli sliscroller">
+            <svg class="sli sliscroller__thumb" xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+              viewBox="0 0 100 100">
+              <polygon points="0 50 37 68 37 32 0 50" style="fill:#fff" />
+              <polygon points="100 50 64 32 64 68 100 50" style="fill:#fff" /></svg>
+          </div>
+        </div>
+        <script src="{% static 'colorizer/js/myscript.js' %}"><\/script>`);
+
+        var ig = new Image();
+        ig.onload = function () {
+          $newwd = (Math.round((ig.width / ig.height) * 600));
+
+          $("#resultwrapper").width($newwd + "px");
+        };
+        ig.src = $srcafter;
+        $("#agodar").attr("style", "filter:grayscale(100%);");
+      }
+    });
+
+
+  }
+
+
+
+  function dragOverHandler(ev) {
+    console.log('File(s) in drop zone');
+    // Prevent default behavior (Prevent file from being opened)
+    ev.preventDefault();
+  }
+
+</script>
+{% endblock %}

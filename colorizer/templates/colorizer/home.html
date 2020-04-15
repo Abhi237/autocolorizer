@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Painter | Colorize Black and white images to color</title>
+  <meta name="description" content="Colorize your black and white photos using our free tool.">
+  <meta name="keywords"
+    content="black and white to color, b/w,colorizer,colorization,dnn,cnn,computer vision,machine learning,artificial intelligence">
+  {% load static %}
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Fira+Sans|Roboto:300,400|Questrial|Satisfy">
+  <link rel="stylesheet" type="text/css" href="{% static 'colorizer/css/font-awesome.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'colorizer/css/dropzone.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'colorizer/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'colorizer/css/animate.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'colorizer/css/style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'colorizer/css/mystyle.css' %}">
+  <link rel="icon" type="image/png" href="{% static 'colorizer/img/icon.png' %}" sizes="16x16">
+
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+  <div class="header">
+    <div class="bg-color">
+      <header id="main-header">
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#lauraMenu">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Autocolorizer</a>
+            </div>
+            <div class="collapse navbar-collapse" id="lauraMenu">
+              <ul class="nav navbar-nav navbar-right navbar-border">
+                <li class="active"><a href="#main-header">Home</a></li>
+                <li><a href="#about">Colorize</a></li>
+                <li><a href="#portfolio">Results Showcase</a></li>
+                <li><a href="#testimonial">About the creators</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="wrapper">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 wow fadeIn delay-05s">
+              <div class="spanner-text">
+                <h1 id="line1" class="deco"></h1>
+                <h1 id="line2" class="deco"></h1>
+              </div>
+              <div class="overlay-detail text-center">
+                <a href="#about"><i class="fa fa-angle-down"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section id="about" class="section-padding wow fadeIn delay-05s">
+    {% block content%}
+
+    {% endblock %}
+  </section>
+  <section id="portfolio" class="section-padding wow fadeInUp delay-05s">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="title text-center">Have a look at our <span class="deco">Best</span> colorizations!</h2>
+        </div>
+        <div class="col-md-12">
+          <div id="myGrid" class="grid-padding">
+            <div class="col-md-4 col-sm-4 padding-right-zero">
+              <img src="{% static 'colorizer/op/op2.jpg' %}" class="img-responsive coolhover">
+              <img src="{% static 'colorizer/op/op10.jpg' %}" class="img-responsive coolhover">
+              <img src="{% static 'colorizer/op/op12.jpg' %}" class="img-responsive coolhover">
+            </div>
+            <div class="col-md-4 col-sm-4 padding-right-zero">
+              <img src="{% static 'colorizer/op/op9.jpg' %}" class="img-responsive coolhover">
+              <img src="{% static 'colorizer/op/op7.jpg' %}" class="img-responsive coolhover">
+              <img src="{% static 'colorizer/op/op8.jpg' %}" class="img-responsive coolhover">
+              <img src="{% static 'colorizer/op/op13.jpg' %}" class="img-responsive coolhover">
+            </div>
+            <div class="col-md-4 col-sm-4 padding-right-zero">
+              <img src="{% static 'colorizer/op/op3.jpg' %}" class="img-responsive coolhover">
+              <img src="{% static 'colorizer/op/op15.jpg' %}" class="img-responsive coolhover">
+              <img src="{% static 'colorizer/op/op5.jpg' %}" class="img-responsive coolhover">
+              <img src="{% static 'colorizer/op/op11.jpg' %}" class="img-responsive coolhover">
+              <img src="{% static 'colorizer/op/op6.jpg' %}" class="img-responsive coolhover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="testimonial" class="section-padding wow fadeInUp">
+    <div class="container">
+      <div class="row">
+        <h2 class="title text-center">About the <span class="deco">Creators</span> of the sevice</h2>
+        <div class="test-sec">
+          <div class="col-sm-4">
+            <blockquote>
+              <p>Deep Learning Ethusiast, Full Stack web developer and passionate competitive programmer.
+                Strongly believes in using algorithmic concepts to solve day to day problems.</p>
+            </blockquote>
+            <div class="carousel-info">
+              <div class="pull-left"> <span class="testimonials-name">Abhishek Thakur</span> <span
+                  class="testimonials-post">BVCOE, Navi Mumbai</span> </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <blockquote>
+              <p>Emerging Android app developer, enthusiastic programmer and web designer.
+                Into REST API and Systems design. Always keen on learning new technologies and frameworks.
+                Last but not the least, he's a Javascript kiddie. </p>
+            </blockquote>
+            <div class="carousel-info">
+              <div class="pull-left"> <span class="testimonials-name">Sumit Pandey</span> <span
+                  class="testimonials-post">BVCOE, Navi Mumbai</span> </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <blockquote>
+              <p>Alongside being a Machine learning enthusiast, MEAN stack developer she is highly skilled in JAVA SE/EE
+                and other frameworks.
+                She is passionate about leveraging machine learning to gain insights into real world data.</p>
+            </blockquote>
+            <div class="carousel-info">
+              <div class="pull-left"> <span class="testimonials-name">Priyanka Dusane</span> <span
+                  class="testimonials-post">BVCOE, Navi Mumbai</span> </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="contact" class="section-padding wow fadeIn delay-05s">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="contact-sec text-center">
+            <h2>Have any <span class="deco">Queries?</span> </h2>
+            <p>Kindly fill the form below in case of queries. We will try to get back to you ASAP.</p>
+          </div>
+        </div>
+
+        <div class="col-md-8 col-md-push-2">
+          <div id="sendmessage">Your message has been sent. Thank you!</div>
+          <div id="errormessage"></div>
+          <form action="" method="post" role="form" class="contactForm">
+            <div class="form-group">
+              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4"
+                data-msg="Please enter at least 4 chars" />
+              <div class="validation"></div>
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
+                data-rule="email" data-msg="Please enter a valid email" />
+              <div class="validation"></div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
+                data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+              <div class="validation"></div>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="message" rows="5" data-rule="required"
+                data-msg="Please write something for us" placeholder="Message"></textarea>
+              <div class="validation"></div>
+            </div>
+
+            <div class="text-center"><button type="submit" class="btn btn-primary btn-lg">Send Message</button></div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <footer class="footer-2 text-center-xs bg--white">
+    <div class="container">
+      <!--end row-->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="footer">
+            © MIT License
+            <div class="credits">
+              Refer <a href="https://en.wikipedia.org/wiki/MIT_License">this document</a> for details.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 text-right">
+          <ul class="social-list">
+            <li>
+              <a href="https://www.linkedin.com/in/abhishek-thakur-4ab02417b/"><i class="fa fa-linkedin"></i></a>
+            </li>
+            <li>
+              <a href="https://codepen.io/rebelof98"><i class="fa fa-codepen"></i></a>
+            </li>
+            <li>
+              <a href="https://github.com/Abhi237"><i class="fa fa-github"></i></a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/sycozzy/"><i class="fa fa-instagram"></i></a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+      <!--end row-->
+    </div>
+  </footer>
+  <script src="{% static 'colorizer/js/jquery.min.js' %}"></script>
+  <script src="{% static 'colorizer/js/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'colorizer/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'colorizer/js/wow.js' %}"></script>
+  <script src="{% static 'colorizer/js/custom.js' %}"></script>
+  <script src="{% static 'colorizer/contactform/contactform.js' %}"></script>
+  <script src="{% static 'colorizer/js/jquery.typer.js' %}"></script>
+  <script>
+    $("#line1").typeTo("Relive your memories...");
+    function pri() {
+      console.log("called");
+      setTimeout(function () {
+        $("#line2").typeTo("...now in Color!");
+        console.log("done");
+      }, 3000);
+    }
+    pri();
+  </script>
+
+</body>
+
+</html>

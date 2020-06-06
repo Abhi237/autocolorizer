@@ -11,7 +11,7 @@ cycler==0.10.0
 cytoolz==0.10.1
 dask==2.9.1
 decorator==4.4.1
-Django==3.0.4
+Django==3.0.7
 gast==0.2.2
 google-pasta==0.1.8
 grpcio==1.16.1

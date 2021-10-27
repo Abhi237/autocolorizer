@@ -9,7 +9,7 @@ cloudpickle==1.2.2
 colorama==0.4.1
 cycler==0.10.0
 cytoolz==0.10.1
-dask==2.9.1
+dask==2021.10.0
 decorator==4.4.1
 Django==3.0.4
 gast==0.2.2
